@@ -29,6 +29,6 @@ Estimate of time needed to complete: 4-6 hrs
 
 Start time: 300pm
 
-Finish time: _____
+Finish time: 2pm next day
 
-Actual time needed to complete: _____
+Actual time needed to complete: 5-6hrs

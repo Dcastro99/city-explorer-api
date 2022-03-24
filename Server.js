@@ -19,16 +19,33 @@ class Forecast {
 }
 
 app.get('/', (request, response) => {
-  response.send('hellow from the route!!!');
+  response.send('hello from the route!!!');
 });
 
-app.get('/weather', (req, res, next) => {
+// this method to be used for async weather api, becasue we are using `next`
+app.get('/weatherNew', (req, res, next) => {
+  const { lat, lon, searchQuery } = req.query;
+  try {
+    // API stuff would go here.
+    const results = weatherList.find(
+      (cityInfo) =>
+        (cityInfo.lat === lat && cityInfo.lon === lon) ||
+        cityInfo.city_name.toLowerCase() === searchQuery.toLowerCase()
+    );
+    const toSend = results.data.map((forecast) => new Forecast(forecast));
+    res.send(toSend);
+  } catch (error) {
+    next(new Error('No weather here sucka!'));
+  }
+});
+
+app.get('/weather', (req, res) => {
   const { lat, lon, searchQuery } = req.query;
 
   const results = weatherList.find(
     (cityInfo) =>
       (cityInfo.lat === lat && cityInfo.lon === lon) ||
-      cityInfo.city_name.toLocaleLowerCase() === searchQuery.toLocaleLowerCase()
+      cityInfo.city_name.toLowerCase() === searchQuery.toLowerCase()
   );
 
   // res.send('My Crazy Weather!!');
@@ -36,7 +53,7 @@ app.get('/weather', (req, res, next) => {
     const toSend = results.data.map((forecast) => new Forecast(forecast));
     res.send(toSend);
   } else {
-    next(new Error('No weather here sucka!'));
+    throw new Error('No weather here sucka!');
   }
 });
 
@@ -44,8 +61,8 @@ app.get('*', (req, res) => {
   res.status(404).send('no, no ,no... superman no here...');
 });
 
-app.use((error, request, response) => {
-  response.status(500).send(error.message);
+app.use((error, request, response, next) => {
+  response.status(500).send({ weatherError: error.message });
 });
 
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));

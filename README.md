@@ -32,3 +32,5 @@ Start time: 300pm
 Finish time: 2pm next day
 
 Actual time needed to complete: 5-6hrs
+
+![](flow-chart.png)

@@ -9,7 +9,7 @@ const axios = require('axios');
 
 app.use(
   cors({
-    origin: 'https://dannys-city-explorer.netlify.app/',
+    origin: '*',
   })
 );
 

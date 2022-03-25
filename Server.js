@@ -7,11 +7,7 @@ const cors = require('cors');
 const app = express();
 const axios = require('axios');
 
-app.use(
-  cors({
-    origin: '*',
-  })
-);
+app.use(cors());
 
 const PORT = process.env.PORT || 'NOPE!!';
 

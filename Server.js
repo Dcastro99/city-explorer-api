@@ -7,7 +7,11 @@ const cors = require('cors');
 const app = express();
 const axios = require('axios');
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://dannys-city-explorer.netlify.app/',
+  })
+);
 
 const PORT = process.env.PORT || 'NOPE!!';
 

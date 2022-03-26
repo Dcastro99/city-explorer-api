@@ -101,8 +101,8 @@ app.get('*', (req, res) => {
   res.status(404).send('no, no ,no... superman no here...');
 });
 
-// app.use((error, request, response, next) => {
-//   response.status(500).send({ weatherError: error.message });
-// });
+app.use((error, response) => {
+  response.status(500).send({ weatherError: error.message });
+});
 
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));

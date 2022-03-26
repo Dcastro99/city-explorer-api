@@ -101,7 +101,7 @@ app.get('*', (req, res) => {
   res.status(404).send('no, no ,no... superman no here...');
 });
 
-app.use((error, response) => {
+app.use('*', (error, response) => {
   response.status(500).send({ weatherError: error.message });
 });
 

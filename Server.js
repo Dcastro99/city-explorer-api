@@ -9,7 +9,7 @@ const axios = require('axios');
 
 app.use(cors());
 
-const PORT = process.env.PORT || 'NOPE!!';
+const PORT = process.env.PORT || 3002;
 
 app.get('/', (request, response) => {
   response.send('hello from the route!!!');

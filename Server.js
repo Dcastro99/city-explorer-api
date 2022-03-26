@@ -79,7 +79,7 @@ const getMovie = async (req, res) => {
     throw new Error(error.message);
   }
 };
-
+// ok fun
 const baseImageUrl = 'https://image.tmdb.org/t/p/w500/';
 
 class Movie {

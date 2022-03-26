@@ -51,7 +51,7 @@ const getWeather = async (req, res) => {
   const { lat, lon, searchQuery } = req.query;
   const url = `https://api.weatherbit.io/v2.0/forecast/daily?days=7&lat=${lat}&lon=${lon}&city=${searchQuery}&key=${process.env.WEATHER_API_KEY}`;
   const weatherList = await axios.get(url);
-
+  console.log(weatherList);
   const weather = weatherList.data.data.map((value) => {
     return new Forecast(value);
   });
@@ -101,8 +101,8 @@ app.get('*', (req, res) => {
   res.status(404).send('no, no ,no... superman no here...');
 });
 
-app.use((error, request, response, next) => {
-  response.status(500).send({ weatherError: error.message });
-});
+// app.use((error, request, response, next) => {
+//   response.status(500).send({ weatherError: error.message });
+// });
 
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));

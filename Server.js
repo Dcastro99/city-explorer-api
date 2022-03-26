@@ -79,18 +79,18 @@ const getMovie = async (req, res) => {
     throw new Error(error.message);
   }
 };
-// ok fun
+
 const baseImageUrl = 'https://image.tmdb.org/t/p/w500/';
 
 class Movie {
   constructor(data) {
     this.title = data.title;
     this.overview = data.overview;
-    this.average_votes = data.average_votes;
-    this.total_votes = data.total_votes;
+    this.average_votes = data.vote_average;
+    this.total_votes = data.vote_count;
     this.image_url = baseImageUrl + data.poster_path;
     this.popularity = data.popularity;
-    this.released_on = data.release_on;
+    this.released_on = data.release_date;
   }
 }
 

@@ -33,4 +33,20 @@ Finish time: 2pm next day
 
 Actual time needed to complete: 5-6hrs
 
+
+> Lab 09
+
+Name of feature: Refactoring into Modules
+
+Estimate of time needed to complete: 4-6 hrs
+
+Start time: 4pm
+
+Finish time: 6pm
+
+Actual time needed to complete: 2hrs
+
 ![](flow-chart.png)
+
+![Lab 09 Flow Chart](lab-9flow.png)
+

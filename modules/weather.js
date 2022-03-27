@@ -28,7 +28,7 @@ let changeDate = (date) => {
 
 let changeMonth = (month) => {
   for (let i = 1; i < weatherArr.length + 1; i++) {
-    if (i === month) {
+    if (i == month) {
       return weatherArr[i];
     }
   }

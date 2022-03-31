@@ -16,8 +16,30 @@ app.get('/', (request, response) => {
   response.send('hello from the route!!!');
 });
 
-app.get('/weather', getWeather);
-app.get('/movies', getMovie);
+app.get('/movies', movieHandler);
+app.get('/weather', weatherHandler);
+
+async function weatherHandler(request, response) {
+  const { lat, lon, searchQuery } = request.query;
+  try {
+    const summaries = await getWeather(lat, lon, searchQuery);
+    response.send(summaries);
+  } catch (error) {
+    console.error(error);
+    response.status(500).send('Sorry. Something went wrong fetching weather!');
+  }
+}
+
+async function movieHandler(request, response) {
+  const { searchQuery } = request.query;
+  try {
+    const summaries = await getMovie(searchQuery);
+    response.send(summaries);
+  } catch (error) {
+    console.error(error);
+    response.status(500).send('Sorry. Something went wrong fetching movies!');
+  }
+}
 
 app.get('*', (req, res) => {
   res.status(404).send('no, no ,no... superman no here...');
